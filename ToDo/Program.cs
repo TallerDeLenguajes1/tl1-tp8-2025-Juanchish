@@ -1,7 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using EspacioTarea;
 
-// punto 1
+// punto 2
 
 Console.WriteLine("Ingrese una cantidad de tareas:");
 string? cant = Console.ReadLine();
@@ -47,7 +47,7 @@ else
 }
 
 
-// punto 2
+// punto 3
 
 List<Tarea> tareasRealizadas = new List<Tarea>();
 
@@ -56,13 +56,13 @@ string? mover = Console.ReadLine();
 string? repetir;
 
 
-do
+if (mover == "s")
 {
-    if (mover == "s")
+    do
     {
         Tarea? tareaAMover = null;
 
-        Console.WriteLine("Ingrese el id de la tarea a mover:");
+        Console.WriteLine("\nIngrese el id de la tarea a buscar:");
         string? idMov = Console.ReadLine();
         bool moverId = int.TryParse(idMov, out int idMover);
 
@@ -87,12 +87,11 @@ do
                 Console.WriteLine("Tarea no encontrada");
             }
         }
-    }
 
-    Console.WriteLine("Mover otra tarea? s/n");
-    repetir = Console.ReadLine();
-} while (repetir == "s");
-
+        Console.WriteLine("Mover otra tarea? s/n");
+        repetir = Console.ReadLine();
+    } while (repetir == "s");
+}
 
 Console.WriteLine("\n----------Mostrando la lista de pendientes----------");
 foreach (var tarea in tareasPendientes)
@@ -107,3 +106,29 @@ foreach (var tarea in tareasRealizadas)
     Console.WriteLine($"Tarea n{tarea.TareaID}, Descripcion: {tarea.Descripcion}, Duracion: {tarea.Duracion}");
 }
 
+// punto 4
+
+void MostrarPorDescripcion(string descripcion)
+{
+    Tarea? tareaBuscada = null;
+
+    Console.WriteLine("\nIngrese la descripcion de la tarea a mover:");
+    string? buscarDescripcion = Console.ReadLine();
+
+    foreach (var item in tareasPendientes)
+    {
+        if (item.Descripcion == buscarDescripcion)
+        {
+            tareaBuscada = item;
+            Console.WriteLine($"\n----------Mostrando la tarea con la descripcion buscada {buscarDescripcion}----------");
+
+            foreach (var tarea in tareasPendientes)
+            {
+                Console.WriteLine($"Tarea n{tarea.TareaID}, Descripcion: {tarea.Descripcion}, Duracion: {tarea.Duracion}");
+            }
+        }
+    }
+}
+
+
+MostrarPorDescripcion("hola1");
