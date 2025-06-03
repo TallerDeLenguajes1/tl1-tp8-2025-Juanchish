@@ -107,4 +107,3 @@ foreach (var tarea in tareasRealizadas)
     Console.WriteLine($"Tarea n{tarea.TareaID}, Descripcion: {tarea.Descripcion}, Duracion: {tarea.Duracion}");
 }
 
-
